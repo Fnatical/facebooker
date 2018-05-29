@@ -1,4 +1,4 @@
 # facebooker
 
-Grab stuff from Facebook using the API.
-DC
+Incorrectly named.
+Basic Twitter API functionality.
