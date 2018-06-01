@@ -1,4 +1,2 @@
-# facebooker
-
-Incorrectly named.
-Basic Twitter API functionality.
+Search the Twitter API.
+Dump results in to Elasticsearch.
