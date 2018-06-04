@@ -4,17 +4,16 @@ from twython import Twython
 from elasticsearch import Elasticsearch
 import requests
 import json
-import pprint
+import time
 
 es = Elasticsearch()
-pp = pprint.PrettyPrinter(indent=4)
 
 with open("twitter_credentials.json", "r") as file:  
     creds = json.load(file)
 
 python_tweets = Twython(creds["CONSUMER_KEY"], creds["CONSUMER_SECRET"])
 #"geocode": "-28.0173,153.4257,200km",
-query = {"q": "gold coast tennis",  
+query = {"q": "fishing",  
         "result_type": "mixed",
         "count": 100,
         "lang": "en",
@@ -73,9 +72,7 @@ for line in response["statuses"]:
     obj["followers"] = followers_count
     obj["text"] = text
 
-    #es.index(index="twitter_tennis", doc_type="gold_coast_tennis", id=i, body=obj)
+    es.index(index="fishing", doc_type="query_fishing", id=int(time.time()), body=obj)
 
-    #i+=1
 
-a = es.search(index='twitter_tennis', doc_type='gold_coast_tennis')
-print(a)
+#a = es.search(index='twitter_tennis', doc_type='gold_coast_tennis')
